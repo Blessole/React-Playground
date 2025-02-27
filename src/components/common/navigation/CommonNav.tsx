@@ -13,7 +13,7 @@ interface Navigation {
 
 function CommonNav() {
 
-     const [navigation, setNavigation] = useState<Navigation[]>(navJson);
+     const [navigation] = useState<Navigation[]>(navJson);
 
      // useState로 선언한 반응성을 가진 데이터를 기반으로 UI 반복 호출
     const navLinks = navigation.map((item: Navigation) => {

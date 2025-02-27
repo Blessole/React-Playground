@@ -4,8 +4,44 @@ import CommonNav from "@components/common/navigation/CommonNav.tsx";
 import CommonFooter from "@components/common/footer/CommonFooter.tsx";
 import Card from "@pages/index/component/Card.tsx";
 import styles from './styles/index.module.scss'
+import axios from "axios";
+import {useEffect, useState} from "react";
+import {CardDTO} from "@pages/index/types/card.ts";
 
-function index() {
+function Index() {
+    const [imageUrls, setImageUrls] = useState([]);
+   const getData =  async () => {
+     // 오픈 API 호출
+     const API_URL = 'https://api.unsplash.com/search/photos';
+     const API_KEY = import.meta.env.VITE_UNSPLASH_API_KEY;
+     const PER_PAGE = 30;
+
+     const searchValue = 'dog';
+     const pageValue = 100;
+
+     try {
+       const res = await axios.get(`${API_URL}?query=${searchValue}&client_id=${API_KEY}&per_page=${PER_PAGE}&page=${pageValue}`);
+
+       console.log(res);
+        if(res.status === 200) {
+            setImageUrls(res.data.results);
+        }
+
+     } catch (error) {
+       console.log(error)
+     }
+   }
+
+   const cardList = imageUrls.map((card: CardDTO) => {
+       return (
+              <Card key={card.id} data={card} />
+       )
+   })
+
+   useEffect(() => {
+       getData();
+   },[])
+
     return <div className={styles.page}>
         {/* 공통 헤더 UI 부분 */}
         <CommonHeader />
@@ -24,10 +60,7 @@ function index() {
                 </div>
             </div>
             <div className={styles.page__contents__imageBox}>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {cardList}
             </div>
         </div>
         {/* 공통 푸터 UI 부분 */}
@@ -35,4 +68,4 @@ function index() {
     </div>
 }
 
-export default index
+export default Index
