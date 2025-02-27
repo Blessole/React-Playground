@@ -1,7 +1,7 @@
 import styles from './CommonFooter.module.scss';
 
 function CommonFooter() {
-    return <div className={styles.footer}>
+    return <footer className={styles.footer}>
         <div className={styles.pagination}>
             <button className={styles.pagination__button}>
                 <img src="src/assets/icons/icon-arrowLeft.svg" alt="arrow-left" />
@@ -12,7 +12,7 @@ function CommonFooter() {
                 <img src="src/assets/icons/icon-arrowRight.svg" alt="arrow-right" />
             </button>
         </div>
-    </div>
+    </footer>
 }
 
 export default CommonFooter
