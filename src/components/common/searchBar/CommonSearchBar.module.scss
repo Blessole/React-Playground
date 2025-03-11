@@ -1,3 +1,5 @@
+@import "@/assets/styles/color.scss";
+
 .searchBar {
   display: flex;
   align-items: center;
@@ -26,7 +28,7 @@
       box-shadow: 0 0 8px 0 rgba(21, 112, 239, 0.3);
 
       .input {
-        color: $color-gray-800;
+        color:  $color-gray-800;
       }
     }
 
