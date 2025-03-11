@@ -1,28 +1,38 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import globals from "globals";
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
+import eslintPluginReact from "eslint-plugin-react";
+import eslintPluginHooks from "eslint-plugin-react-hooks";
+import prettierConfig from 'eslint-config-prettier';
 
+
+/** @type {import('eslint').Linter.Config[]} */
 export default tseslint.config(
-  { ignores: ['dist'] },
+    {ignores: ["**/node_modules/**", "**/dist/**"]},
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+    prettierConfig,
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    files: ["**!/!*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
     },
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+        react: eslintPluginReact,
+        "react-hooks": eslintPluginHooks,
+
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      "semi": ["error", "never"],
+      "indent": ["error", 2],
+
+      // react 관련 규칙
+      ...eslintPluginReact.configs.flat.recommended.rules,
+      ...eslintPluginHooks.configs.recommended.rules,
+      'react/jsx-uses-vars': 'error',
+      'react/react-in-jsx-scope': 'off',
+      'react-hooks/rules-of-hooks': 'error',
     },
   },
 )
