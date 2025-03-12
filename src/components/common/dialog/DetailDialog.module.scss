@@ -51,13 +51,13 @@
 
 
         &__button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
           border: none;
           outline: none;
-        background: transparent;
+          background: transparent;
 
           cursor: pointer;
         }
@@ -89,7 +89,7 @@
           border-radius: 6px;
           text-align: center;
 
-          background: $color-white-600;
+          background: $color-white-000;
           border: 1px solid $color-gray-400;
           color: $color-gray-600;
           cursor: pointer;
