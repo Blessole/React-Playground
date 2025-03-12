@@ -1,4 +1,4 @@
-// import {useState} from "react";
+import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { imageData } from '@/store/selectors/imageSelector.ts';
 import CommonHeader from '@components/common/header/CommonHeader.tsx';
@@ -6,15 +6,25 @@ import CommonSearchBar from '@components/common/searchBar/CommonSearchBar.tsx';
 import CommonNav from '@components/common/navigation/CommonNav.tsx';
 import CommonFooter from '@components/common/footer/CommonFooter.tsx';
 import Card from '@pages/index/component/Card.tsx';
+import DetailDialog from '@components/common/dialog/DetailDialog.tsx';
+
 import styles from './styles/index.module.scss';
 import { CardDTO } from '@pages/index/types/card.ts';
 
 function Index() {
   const storeImg = useRecoilValue(imageData);
-  // const [imgData, setImgData] = useState<CardDTO[]>([]);
+  const [imgData, setImgData] = useState<CardDTO[]>();
+  const [open, setOpen] = useState<boolean>(false); // 이미지 상세 다이얼로그 발생 state
 
   const CARD_LIST = storeImg.data.results.map((card: CardDTO) => {
-    return <Card key={card.id} data={card} />;
+    return (
+      <Card
+        key={card.id}
+        data={card}
+        handleDialog={setOpen}
+        handleSetData={setImgData}
+      />
+    );
   });
 
   return (
@@ -39,6 +49,7 @@ function Index() {
       </div>
       {/* 공통 푸터 UI 부분 */}
       <CommonFooter />
+      {open && <DetailDialog data={imgData} handleDialog={setOpen} />}
     </div>
   );
 }
