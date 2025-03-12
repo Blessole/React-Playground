@@ -1,14 +1,14 @@
 [
-  { "index": 0, "label": "보드/편집 전용", "path": "/edit", "searchValue": "edit", "isActive": false },
-  { "index": 1, "label": "팔로잉", "path": "/following", "searchValue": "following", "isActive": false },
-  { "index": 2, "label": "Unsplash Photo+", "path": "/photoPlus", "searchValue": "photo", "isActive": false },
-  { "index": 3, "label": "단색", "path": "/oneColor", "searchValue": "one color", "isActive": false },
-  { "index": 4, "label": "3D 렌더링", "path": "/3dRender", "searchValue": "3d rendering", "isActive": false },
-  { "index": 5, "label": "자연", "path": "/nature", "searchValue": "nature", "isActive": false },
-  { "index": 6, "label": "텍스처 및 패턴", "path": "/texture", "searchValue": "texture", "isActive": false },
-  { "index": 7, "label": "인테리어", "path": "/interior", "searchValue": "interior", "isActive": false },
-  { "index": 8, "label": "필름", "path": "/film", "searchValue": "film", "isActive": false },
-  { "index": 9, "label": "실험적인", "path": "/experimental", "searchValue": "experimental", "isActive": false },
-  { "index": 10, "label": "여행", "path": "/travel", "searchValue": "travel", "isActive": false },
-  { "index": 11, "label": "스포츠", "path": "/sports", "searchValue": "sports", "isActive": false }
+  { "index": 0, "label": "보드/편집 전용", "path": "/search/edit", "searchValue": "edit", "isActive": false },
+  { "index": 1, "label": "팔로잉", "path": "/search/following", "searchValue": "following", "isActive": false },
+  { "index": 2, "label": "Unsplash Photo+", "path": "/search/photoPlus", "searchValue": "photo", "isActive": false },
+  { "index": 3, "label": "단색", "path": "/search/oneColor", "searchValue": "one color", "isActive": false },
+  { "index": 4, "label": "3D 렌더링", "path": "/search/3dRender", "searchValue": "3d rendering", "isActive": false },
+  { "index": 5, "label": "자연", "path": "/search/nature", "searchValue": "nature", "isActive": false },
+  { "index": 6, "label": "텍스처 및 패턴", "path": "/search/texture", "searchValue": "texture", "isActive": false },
+  { "index": 7, "label": "인테리어", "path": "/search/interior", "searchValue": "interior", "isActive": false },
+  { "index": 8, "label": "필름", "path": "/search/film", "searchValue": "film", "isActive": false },
+  { "index": 9, "label": "실험적인", "path": "/search/experimental", "searchValue": "experimental", "isActive": false },
+  { "index": 10, "label": "여행", "path": "/search/travel", "searchValue": "travel", "isActive": false },
+  { "index": 11, "label": "스포츠", "path": "/search/sports", "searchValue": "sports", "isActive": false }
 ]

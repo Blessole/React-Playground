@@ -12,6 +12,7 @@ interface Props {
 }
 
 function DetailDialog({ data, handleDialog }: Props) {
+  console.log(data);
   const [bookmark, setBookmark] = useState(false);
 
   // 다이얼로그 끄기
@@ -56,7 +57,20 @@ function DetailDialog({ data, handleDialog }: Props) {
       getLocalStorage.findIndex((item: CardDTO) => item.id === data.id) > -1
     ) {
       setBookmark(true);
-    } else if (!getLocalStorage) return;
+    }
+
+    // ESC 키를 눌렀을 때, 다이얼로그 닫기
+    const escKeyDownCloseDialog = (event) => {
+      if (event.key === 'Escape') {
+        closeDialog();
+      }
+    };
+
+    // 위에 만들어둔 escKeyDownCloseDialog 함수를 이벤트리스너로 등록 및 해지
+    document.addEventListener('keydown', escKeyDownCloseDialog);
+    return () => {
+      document.removeEventListener('keydown', escKeyDownCloseDialog);
+    };
   }, []);
   return (
     <div className={styles.container}>

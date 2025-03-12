@@ -2,12 +2,12 @@ import styles from './CommonSearchBar.module.scss';
 import { useState } from 'react';
 import * as React from 'react';
 import { searchState } from '@/store/atoms/searchState.ts';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { pageState } from '@/store/atoms/pageState.ts';
 
 function CommonSearchBar() {
-  const [search, setSearch] = useRecoilState(searchState);
-  const [page, setPage] = useRecoilState(pageState);
+  const setSearch = useSetRecoilState(searchState);
+  const setPage = useSetRecoilState(pageState);
   const [text, setText] = useState('');
   const onChange = (event) => {
     setText(event.target.value); // 입력하는 값을 할당하는 방법
@@ -45,7 +45,11 @@ function CommonSearchBar() {
           onChange={onChange}
           onKeyDown={handleKeyDown}
         />
-        <img src='src/assets/icons/icon-search.svg' onClick={onSearch} />
+        <img
+          src='src/assets/icons/icon-search.svg'
+          alt='검색 아이콘'
+          onClick={onSearch}
+        />
       </div>
     </div>
   );

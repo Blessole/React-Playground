@@ -8,7 +8,6 @@ interface Props {
 }
 function Card({ data, handleDialog, handleSetData }: Props) {
   const openDialog = () => {
-    console.log('open dialog');
     handleDialog(true);
     handleSetData(data);
   };

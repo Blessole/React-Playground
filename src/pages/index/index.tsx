@@ -14,7 +14,7 @@ import { CardDTO } from '@pages/index/types/card.ts';
 
 function Index() {
   const storeImg = useRecoilValueLoadable(imageData);
-  const [imgData, setImgData] = useState<CardDTO[]>();
+  const [imgData, setImgData] = useState<CardDTO[]>([]);
   const [open, setOpen] = useState<boolean>(false); // 이미지 상세 다이얼로그 발생 state
 
   // 반복적으로 호출해야하는 함수를 useMemo를 통해 한번만 호출하도록 처리 (vue의 computed와 비슷)
@@ -27,7 +27,7 @@ function Index() {
             key={card.id}
             data={card}
             handleDialog={setOpen}
-            handleSetData={setImgData}
+            handleSetData={(newCard) => setImgData([newCard])}
           />
         );
       });
@@ -58,7 +58,9 @@ function Index() {
       </div>
       {/* 공통 푸터 UI 부분 */}
       <CommonFooter />
-      {open && <DetailDialog data={imgData} handleDialog={setOpen} />}
+      {open && imgData.length > 0 && (
+        <DetailDialog data={imgData[0]} handleDialog={setOpen} />
+      )}
     </div>
   );
 }

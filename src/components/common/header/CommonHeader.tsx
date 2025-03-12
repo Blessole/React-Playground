@@ -4,13 +4,17 @@ import { useNavigate } from 'react-router-dom';
 function CommonHeader() {
   const navigate = useNavigate();
   // 북마크 페이지로 이동
-  const moveToPage = () => {
-    navigate('/bookmark');
+  const moveToPage = (filter: string) => {
+    if (filter === 'main') navigate('/');
+    if (filter === 'bookmark') navigate('/bookmark');
   };
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__logoBox} onClick={() => navigate('/')}>
+      <div
+        className={styles.header__logoBox}
+        onClick={() => moveToPage('main')}
+      >
         <img
           src='src/assets/images/image-logo.png'
           alt=''
@@ -22,7 +26,7 @@ function CommonHeader() {
         <button className={styles.header__profileBox__button}>사진제출</button>
         <button
           className={styles.header__profileBox__button}
-          onClick={moveToPage}
+          onClick={() => moveToPage('bookmark')}
         >
           북마크
         </button>
