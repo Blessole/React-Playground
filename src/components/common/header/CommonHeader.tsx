@@ -10,7 +10,7 @@ function CommonHeader() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__logoBox}>
+      <div className={styles.header__logoBox} onClick={() => navigate('/')}>
         <img
           src='src/assets/images/image-logo.png'
           alt=''
