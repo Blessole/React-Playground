@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useMemo, useState } from 'react';
+import { useRecoilValueLoadable } from 'recoil';
 import { imageData } from '@/store/selectors/imageSelector.ts';
 import CommonHeader from '@components/common/header/CommonHeader.tsx';
 import CommonSearchBar from '@components/common/searchBar/CommonSearchBar.tsx';
@@ -12,20 +12,28 @@ import styles from './styles/index.module.scss';
 import { CardDTO } from '@pages/index/types/card.ts';
 
 function Index() {
-  const storeImg = useRecoilValue(imageData);
+  const storeImg = useRecoilValueLoadable(imageData);
   const [imgData, setImgData] = useState<CardDTO[]>();
   const [open, setOpen] = useState<boolean>(false); // 이미지 상세 다이얼로그 발생 state
 
-  const CARD_LIST = storeImg.data.results.map((card: CardDTO) => {
-    return (
-      <Card
-        key={card.id}
-        data={card}
-        handleDialog={setOpen}
-        handleSetData={setImgData}
-      />
-    );
-  });
+  // 반복적으로 호출해야하는 함수를 useMemo를 통해 한번만 호출하도록 처리 (vue의 computed와 비슷)
+  const CARD_LIST = useMemo(() => {
+    // storeImg.state = hasValue, loading, hasError
+    if (storeImg.state === 'hasValue') {
+      return storeImg.contents.map((card: CardDTO) => {
+        return (
+          <Card
+            key={card.id}
+            data={card}
+            handleDialog={setOpen}
+            handleSetData={setImgData}
+          />
+        );
+      });
+    } else {
+      return <div>로딩중...</div>;
+    }
+  }, [storeImg]);
 
   return (
     <div className={styles.page}>
