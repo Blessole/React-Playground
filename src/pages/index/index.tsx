@@ -7,6 +7,7 @@ import CommonNav from '@components/common/navigation/CommonNav.tsx';
 import CommonFooter from '@components/common/footer/CommonFooter.tsx';
 import Card from '@pages/index/component/Card.tsx';
 import DetailDialog from '@components/common/dialog/DetailDialog.tsx';
+import Loading from '@pages/index/component/Loading.tsx';
 
 import styles from './styles/index.module.scss';
 import { CardDTO } from '@pages/index/types/card.ts';
@@ -31,7 +32,7 @@ function Index() {
         );
       });
     } else {
-      return <div>로딩중...</div>;
+      return <Loading />;
     }
   }, [storeImg]);
 

@@ -1,5 +1,5 @@
 import styles from './DetailDialog.module.scss';
-import { CardDTO, Tag } from '@pages/index/types/card.ts';
+import { CardDTO } from '@pages/index/types/card.ts';
 
 interface Props {
   data: CardDTO;
